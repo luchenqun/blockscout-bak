@@ -72,6 +72,7 @@ function sanitizeMutipleInputValues (inputValueElements, inputType, inputCompone
 }
 
 export function compareChainIDs (explorerChainId, walletChainIdHex) {
+  return Promise.resolve()
   if (explorerChainId !== parseInt(walletChainIdHex)) {
     const networkDisplayNameFromWallet = props.getNetworkDisplayName(walletChainIdHex)
     const networkDisplayName = props.getNetworkDisplayName(explorerChainId)
