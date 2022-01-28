@@ -29,3 +29,8 @@ docker-compose up migrate
 docker-compose up -d blockscout
 ```
 执行完成之后浏览器访问 `http://localhost:4000` 进行查看。
+
+## 整合命令
+```bash
+docker volume create postgres-data-volume && docker-compose up -d postgres && docker-compose up migrate && docker-compose up -d blockscout
+```

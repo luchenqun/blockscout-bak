@@ -15,7 +15,7 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   migrate:
-    image: luchenqun/blockscout:local
+    image: luchenqun/blockscout
     depends_on:
       - postgres
     env_file:
@@ -24,7 +24,7 @@ services:
       - DATABASE_URL=postgresql://postgres:postgres@192.168.0.59:5432/blockscout?ssl=false
     command: mix do ecto.create, ecto.migrate
   blockscout:
-    image: luchenqun/blockscout:local
+    image: luchenqun/blockscout
     depends_on:
       - postgres
     expose:
