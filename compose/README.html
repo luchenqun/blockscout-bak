@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="dockerd-blockscout">dockerd-blockscout</h1>
+<p>使用 Docker 镜像快速搭建 <a href="https://github.com/blockscout/blockscout">BlockScout</a> 以太坊区块浏览器服务。基础镜像 <a href="https://hub.docker.com/r/luchenqun/blockscout">luchenqun/blockscout</a> 使用 <a href="https://github.com/luchenqun/blockscout">BlockScout</a> 最新 <code>master</code> 分支进行自动编译。</p>
+<h2 id="%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">准备工作</h2>
+<ol>
+<li>安装 docker 以及 docker-compose 容器编排工具</li>
+<li>自建一个 <code>geth</code> 全节点，需要开放 <code>http</code> 和 <code>ws</code> 接口，并且允许 <code>net,debug,eth,web3,txpool</code> 等模块。示例：</li>
+</ol>
+<pre class="hljs"><code><div>geth --datadir ./data --gcmode archive --networkid 1 --nodiscover --http --http.vhosts=<span class="hljs-string">"*"</span> --http.corsdomain <span class="hljs-string">"*"</span> --http.addr 0.0.0.0 --http.port 40000 --http.api <span class="hljs-string">"eth,net,web3,personal,admin,miner,txpool,debug"</span> --ws --ws.addr 0.0.0.0 --ws.port 40000 --ws.api <span class="hljs-string">"eth,net,web3,personal,admin,miner,txpool,debug"</span> --ws.origins <span class="hljs-string">'*'</span> --verbosity 3 --unlock <span class="hljs-string">"0"</span> --password ./<span class="hljs-built_in">pwd</span> --allow-insecure-unlock --mine --miner.threads 1
+</div></code></pre>
+<h2 id="%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE">修改配置</h2>
+<p>根据自己的情况修改 <code>config.env</code>。也可以添加 BlockScout 支持的<a href="https://docs.blockscout.com/for-developers/information-and-settings/env-variables">环境变量</a>。</p>
+<h2 id="%E5%88%9D%E5%A7%8B%E6%95%B0%E6%8D%AE%E5%BA%93">初始数据库</h2>
+<p>首先启动 PostgreSQL 服务器并后台运行。</p>
+<pre class="hljs"><code><div>docker volume create postgres-data-volume
+docker-compose up -d postgres
+</div></code></pre>
+<p>然后创建 BlockScount 数据库并自动创建所有表，此命令只需要执行一次，初始化数据库后无需再执行。</p>
+<pre class="hljs"><code><div>docker-compose up migrate
+</div></code></pre>
+<h2 id="%E5%90%AF%E5%8A%A8blockscount">启动BlockScount</h2>
+<pre class="hljs"><code><div>docker-compose up -d blockscout
+</div></code></pre>
+<p>执行完成之后浏览器访问 <code>http://localhost:4000</code> 进行查看。</p>
+<h2 id="%E6%95%B4%E5%90%88%E5%91%BD%E4%BB%A4">整合命令</h2>
+<pre class="hljs"><code><div>docker volume create postgres-data-volume &amp;&amp; docker-compose up -d postgres &amp;&amp; docker-compose up migrate &amp;&amp; docker-compose up -d blockscout
+</div></code></pre>
+<h1 id="env-variables">ENV Variables</h1>
+<p>{% hint style=&quot;info&quot; %}
+This table is horizontally scrollable, version information is located in the last column.
+{% endhint %}</p>
+<p>{% hint style=&quot;info&quot; %}
+Additional information related to certain variables is available on the <a href="../ansible-deployment/">ansible deployment</a> page.
+{% endhint %}</p>
+<p>{% hint style=&quot;info&quot; %}
+You will find deprecated ENV vars in <a href="https://docs.blockscout.com/for-developers/information-and-settings/deprecated-env-variables">Deprecated ENV Variables</a> chapter
+{% endhint %}</p>
+<ul>
+<li>
+<p>To set variables using the CLI, use the export command. For example:</p>
+<pre class="hljs"><code><div>$ <span class="hljs-built_in">export</span> ETHEREUM_JSONRPC_VARIANT=parity
+$ <span class="hljs-built_in">export</span> COIN=POA
+$ <span class="hljs-built_in">export</span> NETWORK=POA
+</div></code></pre>
+</li>
+</ul>
+<p>{% file src=&quot;../../.gitbook/assets/blockscout-env.csv&quot; %}
+ENV Variables CSV (7.21.2021)
+{% endfile %}</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Required</th>
+<th>Description</th>
+<th>Default</th>
+<th>Version</th>
+<th>Need recompile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NETWORK</code></td>
+<td>✅</td>
+<td>Environment variable for the main EVM network such as Ethereum or POA</td>
+<td>POA</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SUBNETWORK</code></td>
+<td>✅</td>
+<td>Environment variable for the subnetwork such as Core or Sokol Network. This will be displayed as selected in the chains list dropdown.</td>
+<td>POA Sokol</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>LOGO</code></td>
+<td></td>
+<td>Environment variable for the header logo image location. The logo files names for different chains can be found <a href="https://github.com/poanetwork/blockscout/tree/master/apps/block_scout_web/assets/static/images">here</a></td>
+<td>/images/blockscout_logo.svg</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>LOGO_FOOTER</code></td>
+<td></td>
+<td>Environment variable for the footer logo image location. The logo files names for different chains can be found <a href="https://github.com/poanetwork/blockscout/tree/master/apps/block_scout_web/assets/static/images">here</a></td>
+<td>/images/blockscout_logo.svg</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ETHEREUM_JSONRPC_VARIANT</code></td>
+<td>✅</td>
+<td>Tells the application which RPC Client the node is using (i.e. <code>geth</code>, <code>parity</code>, <code>besu</code>, or <code>ganache</code>) (<a href="client-settings-parity-geth-ganache.md">See Client Settings for more info</a>)</td>
+<td>parity</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ETHEREUM_JSONRPC_HTTP_URL</code></td>
+<td>✅</td>
+<td>The RPC endpoint used to fetch blocks, transactions, receipts, tokens.</td>
+<td>localhost:8545</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ETHEREUM_JSONRPC_TRACE_URL</code></td>
+<td></td>
+<td>The RPC endpoint specifically for the Geth/Parity/Besu client used by trace_block and trace_replayTransaction. This can be used to designate a tracing node.</td>
+<td>localhost:8545</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ETHEREUM_JSONRPC_WS_URL</code></td>
+<td></td>
+<td>The WebSockets RPC endpoint used to subscribe to the <code>newHeads</code> subscription alerting the indexer to fetch new blocks.</td>
+<td>ws://localhost:8546</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ETHEREUM_JSONRPC_TRANSPORT</code></td>
+<td></td>
+<td>Specifies the transport for Blockscout to connect to the Ethereum Node. Available transports are <code>http</code> and <code>ipc</code>. If <code>ipc</code> is selected, also set <code>IPC_PATH</code> variable</td>
+<td>http</td>
+<td>v3.1.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>IPC_PATH</code></td>
+<td></td>
+<td>Path to the IPC file of the running node if IPC transport is chosen</td>
+<td>(empty)</td>
+<td>v2.1.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>NETWORK_PATH</code></td>
+<td></td>
+<td>Used to set a network path other than what is displayed in the root directory. An example would be to add <code>/eth/mainnet/</code> to the root directory.</td>
+<td>/</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>API_PATH</code></td>
+<td></td>
+<td>PATH in API endpoint URL at API docs page</td>
+<td>/</td>
+<td>v3.1.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SOCKET_ROOT</code></td>
+<td></td>
+<td>Custom websocket path</td>
+<td>(empty)</td>
+<td>v3.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>BLOCKSCOUT_HOST</code></td>
+<td></td>
+<td>Host for API endpoint examples</td>
+<td>localhost</td>
+<td>v2.1.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>BLOCKSCOUT_PROTOCOL</code></td>
+<td></td>
+<td>Url scheme for blockscout</td>
+<td>in prod env <code>https</code> is used, in dev env <code>http</code> is used</td>
+<td>v2.1.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SECRET_KEY_BASE</code></td>
+<td>✅</td>
+<td>Use mix phx.gen.secret to generate a new Secret Key Base string to protect production assets.</td>
+<td>(empty)</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>CHECK_ORIGIN</code></td>
+<td></td>
+<td>Used to check the origin of requests when the origin header is present. It defaults to <code>false</code>. In case of true, it will check against the host value.</td>
+<td>false</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>PORT</code></td>
+<td>✅</td>
+<td>Default port the application runs on is 4000</td>
+<td>4000</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>COIN</code></td>
+<td>✅</td>
+<td>The coin here is checked via the CoinGecko API to obtain USD prices on graphs and other areas of the UI</td>
+<td>POA</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>COIN_NAME</code></td>
+<td></td>
+<td>Name of the coin for &quot;Add chain to MetaMask&quot; button</td>
+<td>(empty)</td>
+<td>master</td>
+<td></td>
+</tr>
+<tr>
+<td><code>COINGECKO_COIN_ID</code></td>
+<td></td>
+<td>Explicitly set CoinGecko coin ID</td>
+<td>(empty)</td>
+<td>v3.1.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>METADATA_CONTRACT</code></td>
+<td></td>
+<td>This environment variable is specifically used by POA Network to obtain Validators information to display in the UI.</td>
+<td>(empty)</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>VALIDATORS_CONTRACT</code></td>
+<td></td>
+<td>This environment variable is specifically used by POA Network to obtain the list of current validators.</td>
+<td>(empty)</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>KEYS_MANAGER_CONTRACT</code></td>
+<td></td>
+<td>This environment variable is specifically used by POA Network to set KeysManager proxy contract in order to obtain payout key by mining key. This needs to identify distributed reward to the validator.</td>
+<td>(empty)</td>
+<td>v3.1.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>REWARDS_CONTRACT</code></td>
+<td></td>
+<td>Emission rewards contract address. This env var is used only if <code>EMISSION_FORMAT</code> is set to <code>POA</code></td>
+<td><code>0xeca443e8e1ab29971a45a9c57a6a9875701698a5</code></td>
+<td>v2.0.4+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TOKEN_BRIDGE_CONTRACT</code></td>
+<td></td>
+<td>Token bridge proxy contract. For `TokenBridge` supply module.</td>
+<td><code>0x7301CFA0e1756B71869E93d4e4Dca5c7d0eb0AA6</code></td>
+<td>v1.3.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>EMISSION_FORMAT</code></td>
+<td></td>
+<td>Should be set to <code>POA</code> if you have block emission identical to POA Network. This env var is used only if <code>CHAIN_SPEC_PATH</code> is set</td>
+<td><code>DEFAULT</code></td>
+<td>v2.0.4+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>CHAIN_SPEC_PATH</code></td>
+<td></td>
+<td>Chain specification path (absolute file system path or URL) to import block emission reward ranges and genesis account balances from. Geth- and OpenEthereum-style specs are supported.</td>
+<td>(empty)</td>
+<td>v2.0.4+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SUPPLY_MODULE</code></td>
+<td></td>
+<td>This environment variable is used by the xDai Chain/RSK in order to tell the application how to calculate the total supply of the chain. Available values are <code>TokenBridge</code>, <code>RSK</code></td>
+<td>(empty)</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SOURCE_MODULE</code></td>
+<td></td>
+<td>This environment variable is used to calculate the exchange rate and is specifically used by the xDai Chain. Available value is <code>TokenBridge</code></td>
+<td>(empty)</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>DATABASE_URL</code></td>
+<td>✅</td>
+<td>Variable to define the Database endpoint.</td>
+<td>(empty)</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>POOL_SIZE</code></td>
+<td></td>
+<td>Variable to define the number of database connections allowed excluding read-only API endpoints requests.</td>
+<td>50</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>POOL_SIZE_API</code></td>
+<td></td>
+<td>Variable to define the number of database connections allowed for read-only API endpoints requests.</td>
+<td>50</td>
+<td>v4.1.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ECTO_USE_SSL</code></td>
+<td></td>
+<td>Production environment variable to use SSL on Ecto queries.</td>
+<td>true</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>DATADOG_HOST</code></td>
+<td></td>
+<td>Host configuration setting for <a href="https://docs.datadoghq.com/integrations/">Datadog integration</a></td>
+<td>(empty)</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>DATADOG_PORT</code></td>
+<td></td>
+<td>Port configuration setting for <a href="https://docs.datadoghq.com/integrations/">Datadog integration</a>.</td>
+<td>(empty}</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SPANDEX_BATCH_SIZE</code></td>
+<td></td>
+<td><a href="https://github.com/spandex-project/spandex">Spandex</a> and Datadog configuration setting.</td>
+<td>(empty)</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SPANDEX_SYNC_THRESHOLD</code></td>
+<td></td>
+<td><a href="https://github.com/spandex-project/spandex">Spandex</a> and Datadog configuration setting.</td>
+<td>(empty)</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>HEART_BEAT_TIMEOUT</code></td>
+<td></td>
+<td>Production environment variable to restart the application in the event of a crash.</td>
+<td>30</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>HEART_COMMAND</code></td>
+<td></td>
+<td>Production environment variable to restart the application in the event of a crash.</td>
+<td>(empty)</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>BLOCKSCOUT_VERSION</code></td>
+<td></td>
+<td>Added to the footer to signify the current BlockScout version.</td>
+<td>(empty)</td>
+<td>v1.3.4+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>RELEASE_LINK</code></td>
+<td></td>
+<td>The link to Blockscout release notes in the footer.</td>
+<td>https: //github.com/poanetwork/ blockscout/releases/ tag/${BLOCKSCOUT_VERSION}</td>
+<td>v1.3.5+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ELIXIR_VERSION</code></td>
+<td></td>
+<td>Elixir version to install on the node before Blockscout deploy. It is used in bash script in Terraform / Ansible deployment script</td>
+<td>(empty)</td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>BLOCK_TRANSFORMER</code></td>
+<td></td>
+<td>Transformer for blocks: base or clique.</td>
+<td>base</td>
+<td>v1.3.4+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>GRAPHIQL_TRANSACTION</code></td>
+<td></td>
+<td>Default transaction hash in a sample query to GraphiQL.</td>
+<td>(empty)</td>
+<td>v1.2.0+</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>FIRST_BLOCK</code></td>
+<td></td>
+<td>The block number, where import of blocks by catchup fetcher begins from.</td>
+<td>0</td>
+<td>v1.3.8+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>LAST_BLOCK</code></td>
+<td></td>
+<td>The block number, where import of blocks by catchup fetcher stops.</td>
+<td>(empty)</td>
+<td>v2.0.3+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TRACE_FIRST_BLOCK</code></td>
+<td></td>
+<td>The block number, where indexing of internal transactions begins from.</td>
+<td>0</td>
+<td>v4.1.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TRACE_LAST_BLOCK</code></td>
+<td></td>
+<td>The block number, where indexing of internal transactions stops.</td>
+<td>(empty)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>LINK_TO_OTHER_EXPLORERS</code></td>
+<td></td>
+<td>true/false. If true, links to other explorers are added in the footer</td>
+<td>(empty)</td>
+<td>v1.3.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OTHER_EXPLORERS</code></td>
+<td></td>
+<td>The list of alternative explorers. This env var was introduced in PR <a href="https://github.com/poanetwork/blockscout/pull/3414">#3414</a>.</td>
+<td>(empty)</td>
+<td>v3.4.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SUPPORTED_CHAINS</code></td>
+<td></td>
+<td>An array of supported chains that display in the footer and in the chains dropdown. This var was introduced in this PR <a href="https://github.com/poanetwork/blockscout/pull/1900">#1900</a> and looks like an array of JSON objects.</td>
+<td>(empty)</td>
+<td>v2.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>BLOCK_COUNT_CACHE_PERIOD</code></td>
+<td></td>
+<td>time to live of blocks with consensus count cache in seconds. This var was introduced in <a href="https://github.com/poanetwork/blockscout/pull/1876">#1876</a></td>
+<td>2 hours</td>
+<td>v2.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TXS_COUNT_CACHE_PERIOD</code></td>
+<td></td>
+<td>Interval in seconds to restart the task, which calculates the total txs count.</td>
+<td>2 hours</td>
+<td>v1.3.9+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ADDRESS_COUNT_CACHE_PERIOD</code></td>
+<td></td>
+<td>time to live of cache in seconds. This var was introduced in <a href="https://github.com/poanetwork/blockscout/pull/2822">#2822</a></td>
+<td>2 hours</td>
+<td>v2.1.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ADDRESS_SUM_CACHE_PERIOD</code></td>
+<td></td>
+<td>time to live of addresses sum (except burn address) cache in seconds. This var was introduced in <a href="https://github.com/poanetwork/blockscout/pull/2862">#2862</a></td>
+<td>1 hour</td>
+<td>v2.1.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TOTAL_GAS_USAGE_CACHE_PERIOD</code></td>
+<td></td>
+<td>Interval in seconds to restart the task, which calculates the total gas usage.</td>
+<td>2 hours</td>
+<td>v3.4.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ADDRESS_TRANSACTIONS_GAS_USAGE_COUNTER_CACHE_PERIOD</code></td>
+<td></td>
+<td>Interval in seconds to restart the task, which calculates gas usage at the address.</td>
+<td>30 minutes</td>
+<td>v3.4.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TOKEN_HOLDERS_COUNTER_CACHE_PERIOD</code></td>
+<td></td>
+<td>Interval in seconds to restart the task, which calculates holders count of the token.</td>
+<td>1 hour</td>
+<td>v3.4.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TOKEN_TRANSFERS_COUNTER_CACHE_PERIOD</code></td>
+<td></td>
+<td>Interval in seconds to restart the task, which calculates transfers count of the token.</td>
+<td>1 hour</td>
+<td>v3.4.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ADDRESS_WITH_BALANCES_UPDATE_INTERVAL</code></td>
+<td></td>
+<td>Interval in seconds to restart the task, which calculates addresses with balances.</td>
+<td>30 minutes</td>
+<td>v1.3.9+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TOKEN_METADATA_UPDATE_INTERVAL</code></td>
+<td></td>
+<td>Interval in seconds to restart the task which updates token metadata</td>
+<td>60 * 60 * 24 <em>*</em> 2</td>
+<td>v2.0.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>AVERAGE_BLOCK_CACHE_PERIOD</code></td>
+<td></td>
+<td>Update of average block period cache, in seconds</td>
+<td>30 minutes</td>
+<td>v2.0.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MARKET_HISTORY_CACHE_PERIOD</code></td>
+<td></td>
+<td>Update of market history cache, in seconds</td>
+<td>6 hours</td>
+<td>v2.0.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ALLOWED_EVM_VERSIONS</code></td>
+<td></td>
+<td>the comma-separated list of allowed EVM versions for contract verification. This var was introduced in <a href="https://github.com/poanetwork/blockscout/pull/1964">#1964</a></td>
+<td>&quot;homestead, tangerineWhistle, spuriousDragon, byzantium, constantinople, petersburg,istanbul&quot;</td>
+<td>v2.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>UNCLES_IN_AVERAGE_BLOCK_TIME</code></td>
+<td></td>
+<td>Include or exclude non-consensus blocks in avg block time calculation. Exclude if <code>false</code>.</td>
+<td>false</td>
+<td>v2.0.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>DISABLE_WEBAPP</code></td>
+<td></td>
+<td>If <code>true</code>, endpoints to webapp are hidden (compile-time). Also, enabling it makes notifications go through <code>db_notify</code></td>
+<td><code>false</code></td>
+<td>v2.0.3+</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>DISABLE_READ_API</code></td>
+<td></td>
+<td>If <code>true</code>, read-only endpoints to API are hidden (compile-time)</td>
+<td><code>false</code></td>
+<td>v2.0.3+</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>DISABLE_WRITE_API</code></td>
+<td></td>
+<td>If <code>true</code>, write endpoints to API are hidden (compile-time)</td>
+<td><code>false</code></td>
+<td>v2.0.3+</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>DISABLE_INDEXER</code></td>
+<td></td>
+<td>If <code>true</code>, indexer application doesn't run</td>
+<td><code>false</code></td>
+<td>v2.0.3+</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>WEBAPP_URL</code></td>
+<td></td>
+<td>Link to web application instance, e.g. <code>protocol://host/path</code></td>
+<td>(empty)</td>
+<td>v2.0.3+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>API_URL</code></td>
+<td></td>
+<td>Link to API instance, e.g. <code>protocol://host/path</code></td>
+<td>(empty)</td>
+<td>v2.0.3+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>WOBSERVER_ENABLED</code></td>
+<td></td>
+<td>If <code>true</code> enables wobserver interface</td>
+<td>(empty)</td>
+<td>v3.3.2+</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>SHOW_ADDRESS_MARKETCAP_PERCENTAGE</code></td>
+<td></td>
+<td>Configures market cap percentage column on the top accounts page</td>
+<td><code>true</code></td>
+<td>v2.1.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>CHECKSUM_ADDRESS_HASHES</code></td>
+<td></td>
+<td>If set to <code>true</code>, redirects to checksummed version of address hashes</td>
+<td>true</td>
+<td>v3.1.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>CHECKSUM_FUNCTION</code></td>
+<td></td>
+<td>Defines checksum address function. 2 available values: <code>rsk</code>, <code>eth</code></td>
+<td>eth</td>
+<td>v2.0.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>DISABLE_EXCHANGE_RATES</code></td>
+<td></td>
+<td>Disables or enables fetching of coin price from Coingecko API</td>
+<td>false</td>
+<td>v3.1.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>DISABLE_KNOWN_TOKENS</code></td>
+<td></td>
+<td>Disables or enables token symbol for known contract</td>
+<td>false</td>
+<td>v3.4.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ENABLE_TXS_STATS</code></td>
+<td></td>
+<td>Disables or enables txs per day stats gathering</td>
+<td>false</td>
+<td>v3.1.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SHOW_PRICE_CHART</code></td>
+<td></td>
+<td>Disables or enables price and market cap of coin charts on the main page</td>
+<td>false</td>
+<td>v3.1.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SHOW_TXS_CHART</code></td>
+<td></td>
+<td>Disables or enables txs count per day chart on the main page</td>
+<td>false</td>
+<td>v3.1.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>HISTORY_FETCH_INTERVAL</code></td>
+<td></td>
+<td>Interval in minutes how often to request count of txs per current day in order to display txs count per day chart on the main page</td>
+<td>60</td>
+<td>v3.1.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TXS_HISTORIAN_INIT_LAG</code></td>
+<td></td>
+<td>The initial delay in minutes in txs count history fetching in order to display txs count per day history chart on the main page</td>
+<td>0</td>
+<td>v3.1.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TXS_STATS_DAYS_TO_COMPILE_AT_INIT</code></td>
+<td></td>
+<td>Number of days for fetching of history of txs count per day in order to display it in txs count per day history chart on the main page</td>
+<td>365</td>
+<td>v3.1.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>COIN_BALANCE_HISTORY_DAYS</code></td>
+<td></td>
+<td>Number of days to consider at coin balance history chart</td>
+<td>10</td>
+<td>v3.1.3+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>APPS_MENU</code></td>
+<td></td>
+<td>true/false. If true, the Apps navigation menu item appears</td>
+<td>false</td>
+<td>v3.3.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>EXTERNAL_APPS</code></td>
+<td></td>
+<td>An array of external apps to display in Apps menu item. This var was introduced in this PR <a href="https://github.com/poanetwork/blockscout/pull/3184">#3184</a> and looks like an array of JSON objects.</td>
+<td>(empty)</td>
+<td>v3.3.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ETH_OMNI_BRIDGE_MEDIATOR</code></td>
+<td></td>
+<td>An address of home OmniBridge mediator to bridge multiple tokens from Ethereum. Providing this address enables bridged tokens functionality: bridged status and link to the original token in the foreign chain.</td>
+<td>(empty)</td>
+<td>v3.6.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>BSC_OMNI_BRIDGE_MEDIATOR</code></td>
+<td></td>
+<td>An address of home OmniBridge mediator to bridge multiple tokens from Binance Smart Chain. Providing this address enables bridged tokens functionality: bridged status and link to the original token in the foreign chain.</td>
+<td>(empty)</td>
+<td>v3.6.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>AMB_BRIDGE_MEDIATORS</code></td>
+<td></td>
+<td>A comma-separated list of AMB extensions' mediators' addresses' hashes to fetch bridged tokens through those mediators.</td>
+<td>(empty)</td>
+<td>v3.3.3+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>GAS_PRICE</code></td>
+<td></td>
+<td>Gas price in Gwei. If the variable is present, gas price displays on the main page</td>
+<td>(empty)</td>
+<td>v3.3.2+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>FOREIGN_JSON_RPC</code></td>
+<td></td>
+<td>JSON RPC endpoint to the foreign chain in order to get metadata of bridged through Omni-bridge token. It was introduced in this PR <a href="https://github.com/poanetwork/blockscout/pull/3282">#3282</a></td>
+<td>(empty)</td>
+<td>v3.3.3+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>BRIDGE_MARKET_CAP_UPDATE_INTERVAL</code></td>
+<td></td>
+<td>Market cap update interval for `TokenBridge` supply module as for TokenBridge and for OmniBridge as well, in seconds. It was introduced in this PR <a href="https://github.com/poanetwork/blockscout/pull/3293">#3293</a></td>
+<td>30 minutes</td>
+<td>v3.3.3+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>RESTRICTED_LIST</code></td>
+<td></td>
+<td>A comma-separated list of addresses to enable restricted access to them</td>
+<td>(empty)</td>
+<td>v3.3.3+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>RESTRICTED_LIST_KEY</code></td>
+<td></td>
+<td>A key to access addresses listed in<code>RESTRICTED_LIST</code> variable. Can be passed via query param to the page's URL: <code>?key=...</code></td>
+<td>(empty)</td>
+<td>v3.3.3+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ADDRESS_TRANSACTIONS_CACHE_PERIOD</code></td>
+<td></td>
+<td>time to live of address' transactions counter in seconds. This var was introduced in <a href="https://github.com/poanetwork/blockscout/pull/3330">#3330</a></td>
+<td>1 hour</td>
+<td>v3.4.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>DISABLE_BRIDGE_MARKET_CAP_UPDATER</code></td>
+<td></td>
+<td>Disables recurring consolidation of TokenBridge market cap from TokenBridge, OmniBridge and AMB extensions</td>
+<td>(empty)</td>
+<td>v3.3.3+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>POS_STAKING_CONTRACT</code></td>
+<td></td>
+<td>The address of POSDAO staking contract. When provided, enables staking DApp. ValidatorSet and BlockReward contract addresses are fetched using corresponding getters.</td>
+<td>(empty)</td>
+<td>v3.4.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ENABLE_POS_STAKING_IN_MENU</code></td>
+<td></td>
+<td>Enables Staking dapp in the menu</td>
+<td>false</td>
+<td>v3.6.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TOKEN_EXCHANGE_RATE_CACHE_PERIOD</code></td>
+<td></td>
+<td>Managing cache invalidation for token's exchange rate.</td>
+<td>1 hour</td>
+<td>v3.5.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ADDRESS_TOKENS_USD_SUM_CACHE_PERIOD</code></td>
+<td></td>
+<td>Managing of cache invalidation period for the sum of USD value of tokens per tokens' holder address</td>
+<td>(empty)</td>
+<td>v3.5.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SHOW_MAINTENANCE_ALERT</code></td>
+<td></td>
+<td>Disables/enables announcement at the top of the explorer</td>
+<td>false</td>
+<td>v3.6.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MAINTENANCE_ALERT_MESSAGE</code></td>
+<td></td>
+<td>Message text of the announcement at the top of the explorer</td>
+<td>(empty)</td>
+<td>v3.6.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SHOW_STAKING_WARNING</code></td>
+<td></td>
+<td>Disables/enables announcement inside staking dapp</td>
+<td>false</td>
+<td>v3.6.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>STAKING_WARNING_MESSAGE</code></td>
+<td></td>
+<td>Message text of the announcement inside staking dapp</td>
+<td>(empty)</td>
+<td>v3.6.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>CUSTOM_CONTRACT_ADDRESSES_TEST_TOKEN</code></td>
+<td></td>
+<td>List of test tokens addresses: test label will be applied and those tokens will be excluded from omni bridge market cap calculation</td>
+<td>(empty)</td>
+<td>v3.6.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ENABLE_SOURCIFY_INTEGRATION</code></td>
+<td></td>
+<td>Enables or disables verification of contracts through Sourcify</td>
+<td>false</td>
+<td>v3.7.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SOURCIFY_SERVER_URL</code></td>
+<td></td>
+<td>URL to Sourcify backend</td>
+<td><a href="https://sourcify.dev/server">https://sourcify.dev/server</a></td>
+<td>v3.7.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SOURCIFY_REPO_URL</code></td>
+<td></td>
+<td>URL to Sourcify repository with fully verified contracts</td>
+<td><p><a href="https://repo.sourcify.dev/contracts/">https://repo.sourcify.dev/contracts/</a>*</p><p>*before 3.7.1 <a href="https://repo.sourcify.dev/contracts/full_match/">https://repo.sourcify.dev/contracts/full_match/</a></p></td>
+<td>v3.7.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>CHAIN_ID</code></td>
+<td></td>
+<td>Chain ID of the network. For instance, 100 in the case of xDai chain.</td>
+<td>(empty)</td>
+<td>v3.7.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MAX_SIZE_UNLESS_HIDE_ARRAY</code></td>
+<td></td>
+<td>Hide long arrays in smart-contracts. To get more details: <a href="https://github.com/blockscout/blockscout/pull/4218">#4218</a></td>
+<td>50</td>
+<td>v3.7.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>HIDE_BLOCK_MINER</code></td>
+<td></td>
+<td>Hides miner/validator/sequencer on block page and tiles if the value is `true` Implemented in <a href="https://github.com/blockscout/blockscout/pull/4611">#4611</a></td>
+<td>(empty)</td>
+<td>v4.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>DISPLAY_TOKEN_ICONS</code></td>
+<td></td>
+<td>Displays token icons from TrustWallet assets repository if <code>true</code>. Implemented in <a href="https://github.com/blockscout/blockscout/pull/4596">#4596</a></td>
+<td>(empty)</td>
+<td>v4.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SHOW_TENDERLY_LINK</code></td>
+<td></td>
+<td>if <code>true</code>, &quot;Open in Tenderly&quot; button is displayed on the transaction page. Implemented in <a href="https://github.com/blockscout/blockscout/pull/4656">#4656</a></td>
+<td>(empty)</td>
+<td>v4.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TENDERLY_CHAIN_PATH</code></td>
+<td></td>
+<td>Chain path to the transaction in Tenderly. For instance, for transactions in xDai, Tenderly link looks like this https://dashboard.tenderly.co/tx/xdai/0x..., then <code>TENDERLY_CHAIN_PATH =/xdai.</code> Implemented in <a href="https://github.com/blockscout/blockscout/pull/4656">#4656</a></td>
+<td>(empty)</td>
+<td>v4.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MAX_STRING_LENGTH_WITHOUT_TRIMMING</code></td>
+<td></td>
+<td>Hide long contract method data. For more details: <a href="https://github.com/blockscout/blockscout/pull/4667">#4667</a></td>
+<td>2040</td>
+<td>v4.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>RE_CAPTCHA_SECRET_KEY</code></td>
+<td></td>
+<td>Google reCAPTCHA sectret key. Used by advanced CSV export. Implemented in <a href="https://github.com/blockscout/blockscout/pull/4747">#4747</a></td>
+<td>(empty)</td>
+<td>v4.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>RE_CAPTCHA_CLIENT_KEY</code></td>
+<td></td>
+<td>Google reCAPTCHA client key. Used by advanced CSV export. Implemented in <a href="https://github.com/blockscout/blockscout/pull/4747">#4747</a></td>
+<td>(empty)</td>
+<td>v4.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ADDRESS_TOKEN_TRANSFERS_COUNTER_CACHE_PERIOD</code></td>
+<td></td>
+<td>Interval in seconds to restart the task, which calculates the number of token transfers at the address.Implemented in <a href="broken-reference/">#4699</a></td>
+<td>(empty)</td>
+<td>v4.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>JSON_RPC</code></td>
+<td></td>
+<td>JSON RPC endpoint of the chain for the WalletConnect integration. Implemented in <a href="https://github.com/blockscout/blockscout/pull/4931">#4931</a></td>
+<td>(empy)</td>
+<td>v4.1.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>API_RATE_LIMIT</code></td>
+<td></td>
+<td>A global API rate limit: number or requests per second for all users. Implemented in <a href="https://github.com/blockscout/blockscout/pull/5030">#5030</a></td>
+<td>50</td>
+<td>v4.1.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>API_RATE_LIMIT_BY_KEY</code></td>
+<td></td>
+<td>A dedicated API rate limit for a static API key. Implemented in <a href="https://github.com/blockscout/blockscout/pull/5080">#5080</a></td>
+<td>50</td>
+<td>v4.1.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>API_RATE_LIMIT_BY_IP</code></td>
+<td></td>
+<td>A dedicated API rate limit for whitelisted IPs. Implemented in <a href="https://github.com/blockscout/blockscout/pull/5090">#5090</a></td>
+<td>50</td>
+<td>v4.1.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>API_RATE_LIMIT_WHITELISTED_IPS</code></td>
+<td></td>
+<td>Comma-separated whitelisted IPs list with dedicated rate limit. Implemented in <a href="https://github.com/blockscout/blockscout/pull/5090">#5090</a></td>
+<td>(empty)</td>
+<td>v4.1.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>API_RATE_LIMIT_STATIC_API_KEY</code></td>
+<td></td>
+<td>Static API key with dedicated API rate limit. Implemented in <a href="https://github.com/blockscout/blockscout/pull/5080">#5080</a></td>
+<td>(empty)</td>
+<td>v4.1.1+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>DISPLAY_TOKEN_ICONS</code></td>
+<td></td>
+<td>Display or not token icons</td>
+<td>(empty)</td>
+<td>v4.0.0+</td>
+<td></td>
+</tr>
+<tr>
+<td><code>CHAIN_ID</code></td>
+<td></td>
+<td>Chain ID in decimals</td>
+<td>(empty)</td>
+<td>v4.0.0+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
